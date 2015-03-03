@@ -18,7 +18,7 @@ public class MySpreadsheet {
 
     // 먼저 서비스를 만들고 로그인 정보를 입력합니다.
     SpreadsheetService service = new SpreadsheetService("MySpreadsheetIntegration-v1");
-    service.setUserCredentials("2014ksg@adwitt.com", "rkdtkdrb123");
+    service.setUserCredentials("2014ksg@adwitt.com", "비밀번호");
 
     // Define the URL to request. This should never change.
     URL SPREADSHEET_FEED_URL = new URL("https://spreadsheets.google.com/feeds/spreadsheets/private/full");
