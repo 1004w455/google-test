@@ -1,0 +1,81 @@
+
+
+<html>
+<head>
+	<title>Adwitt Dart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="c/common.css?v=1" type="text/css">
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+google.load("visualization", "1");
+google.setOnLoadCallback(drawChart);
+
+function drawChart() {
+  	//var query = new google.visualization.Query('https://docs.google.com/a/innobirds.com/spreadsheet/ccc?key=0AlxyST4cGwuQdEZVbENrQ3RLS1NmT0licU1Mdm5CVlE&usp=sharing');  
+  	var query = new google.visualization.Query('https://docs.google.com/a/adwitt.com/spreadsheets/d/1crlKgx62WRoK4oSKEjHPvtVbPHJ-feB3OTExI4d0GU4/edit#gid=0');  
+  	query.send(handleQueryResponse);
+}
+
+function handleQueryResponse(res) {
+	
+	var manBox = [];
+	var girlBox = [];
+	
+	$.each(res.q.Lf,function(idx,data){
+		//console.log( data.c[0].v , data.c[1].v );
+		if(data.c[1].v == 1){
+			manBox.push(data.c[0].v);
+		}else{
+			girlBox.push(data.c[0].v);
+		}
+	});
+		
+	
+	var rndManBox = shuffle(manBox);
+	var rndGirlBox = shuffle(girlBox);
+	
+	for(var i =0; i<rndManBox.length; i++){
+		console.log(rndManBox[i] + "<<<--->>>" +rndGirlBox[i]);
+	}
+	
+}
+
+function shuffle(array){
+    if( array == null || array.length == 0)
+        return;
+
+    var len = array.length;
+    for(var i = len;i > 0;i--){
+        array[len-1] = array.splice(Math.floor(Math.random()*i),1)[0];
+    }
+    return array;
+}
+</script>
+</head>
+<body>
+
+
+<div id="contents" style="display:;">
+	<table id="lunch_table" cellpadding="0" cellspacing="0" class="tbl_lunch">
+	<thead>
+		<tr>
+			<th style="width:6%">번호</th>
+			<th style="width:10%">종류</th>
+			<th style="width:15%">이름</th>
+			<th style="width:20%">메뉴</th>
+			<th style="width:60%" class="tr_comments">코멘트</th>
+		</tr>
+	</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>
